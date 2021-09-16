@@ -1,0 +1,1308 @@
+
+@testing:case="function_tmmed_T_scalar",exception=1
+tmmed(1,1,1)
+
+@testing:case="function_tmmed_T_null",exception=1
+tmmed(,1,1)
+
+@testing:case="function_tmmed_T_the_first_NULL",exception=1
+tmmed([NULL, 3, 4, 5, 5, 6, 6, 7, 7, 9], 1..10, 3)
+
+@testing:case="function_tmmed_T_not_the_first_NULL",exception=1
+tmmed([2, 3, 4, NULL, 5, 6, 6, 7, 7, 9], 1..10, 3)
+
+@testing:case="function_tmmed_T_bool_scalar",exception=1
+tmmed(true,1,1)
+
+@testing:case="function_tmmed_T_char_scalar",exception=1
+tmmed('a',1,3)
+
+@testing:case="function_tmmed_T_short_scalar",exception=1
+tmmed(122h, 1,3)
+
+@testing:case="function_tmmed_T_long_scalar",exception=1
+tmmed(122l, 1,3)
+
+@testing:case="function_tmmed_T_date_scalar",exception=1
+tmmed(2013.06.13, 1,3)
+
+@testing:case="function_tmmed_T_month_scalar",exception=1
+tmmed(2012.06M, 1,3)
+
+@testing:case="function_tmmed_T_float_scalar",exception=1
+tmmed(12.1f, 1,3)
+
+@testing:case="function_tmmed_T_double_scalar",exception=1
+tmmed(2.1, 1,3)
+
+@testing:case="function_tmmed_T_string_scalar",exception=1
+tmmed("Hello", 1,3)
+
+@testing:case="function_tmmed_T_uuid_scalar",exception=1
+tmmed(uuid("5d212a78-cc48-e3b1-4235-b4d91473ee87"), 1,3)
+
+@testing:case="function_tmmed_T_code_scalar",exception=1
+tmmed(<1+2>, 1,3)
+
+@testing:case="function_tmmed_T_any_scalar",exception=1
+tmmed((1,2,3), 1,3)
+
+@testing:case="function_tmmed_T_int128_scalar",exception=1
+tmmed(int128("e1671797c52e15f763380b45e841ec32"), 1,3)
+
+@testing:case="function_tmmed_T_ipaddr_scalar",exception=1
+tmmed(ipaddr("192.168.1.13"), 1,3)
+
+@testing:case="function_tmmed_T_duration_scalar",exception=1
+tmmed(duration("1M"), 1,3)
+
+@testing:case="function_tmmed_T_string_vector",exception=1
+tmmed(`A`B`C, 1 2 3,3)
+
+@testing:case="function_tmmed_T_double_vector",exception=1
+tmmed([1.12, 2.23, 3.3], 1 2 3, 3)
+
+@testing:case="function_tmmed_T_float_vector",exception=1
+tmmed([1.12f, 2.23f, 3.3f], 1 2 3, 3)
+
+@testing:case="function_tmmed_T_NULL_vector",exception=1
+tmmed([1, NULL, 3], 1 2 3, 3)
+
+@testing:case="function_tmmed_T_not_ascending_vector",exception=1
+tmmed([3, 2, 1], 1 2 3, 3)
+
+@testing:case="function_tmmed_T_matrix",exception=1
+tmmed(matrix(int, 2, 3), matrix(int, 2, 3), 3)
+
+@testing:case="function_tmmed_T_set",exception=1
+tmmed(set([5,5,3,4]),[1, 2, 3], 3)
+
+@testing:case="function_tmmed_T_table",exception=1
+tmmed(table(1..10 as qty), 1..10, 3)
+
+@testing:case="function_tmmed_X_scalar",exception=1
+tmmed(1..10, 1, 3)
+
+@testing:case="function_tmmed_X_NULL",exception=1
+tmmed(1..10, , 3)
+
+@testing:case="function_tmmed_X_string",exception=1
+tmmed(1..10, `A + string(1..10), 3)
+
+@testing:case="function_tmmed_X_bool",exception=1
+tmmed(1..10, bool(1..10), 3)
+
+@testing:case="function_tmmed_X_date",exception=1
+tmmed(1..10, 2013.06.13 + 1..10, 3)
+
+@testing:case="function_tmmed_X_month",exception=1
+tmmed(1..10, 2013.06M + 1..10, 3)
+
+@testing:case="function_tmmed_X_code",exception=1
+tmmed(1..10,<1+2>, 3)
+
+@testing:case="function_tmmed_X_uuid",exception=1
+tmmed(1..10, take(uuid("5d212a78-cc48-e3b1-4235-b4d91473ee87"), 10), 3)
+
+@testing:case="function_tmmed_X_large_than_T",exception=1
+tmmed(1..10,1..11, 3)
+
+@testing:case="function_tmmed_X_matrix",exception=1
+tmmed(1..10,1..10$2:5, 3)
+
+@testing:case="function_tmmed_window_null",exception=1
+tmmed(1..10,1..10, )
+
+@testing:case="function_tmmed_window_negetive",exception=1
+tmmed(1..10,1..10, -3)
+
+@testing:case="function_tmmed_window_0",exception=1
+tmmed(1..10,1..10, 0)
+
+@testing:case="function_tmmed_window_string",exception=1
+tmmed(1..10,1..10, `A)
+
+@testing:case="function_tmmed_window_vector",exception=1
+tmmed(1..10,1..10, [1, 0])
+
+@testing:case="function_tmmed_window_pair",exception=1
+tmmed(1..10,1..10,3:5)
+
+@testing:case="function_tmmed_window_date",exception=1
+tmmed(1..10,1..10,2012.01.01)
+
+@testing:case="function_tmmed_window_bool",exception=1
+tmmed(1..10,1..10,true)
+
+@testing:case="function_tmmed_window_double",exception=1
+tmmed(1..10,1..10,1.1)
+
+@testing:case="function_tmmed_window_float",exception=1
+tmmed(1..10,1..10,10.1)
+
+@testing:case="function_tmmed_window_matrix",exception=1
+tmmed(1..10,1..10,1..6$2:3)
+
+@testing:case="function_tmmed_T_inter_duration_3d",exception=1
+tmmed(1..10,1..10,3d)
+
+@testing:case="function_tmmed_T_time_negative",exception=1
+tmmed(time(-5..4),1..10,3)
+
+@testing:case="function_tmmed_T_integer_vector"
+num1=1..10
+num2=char(1..10)
+num3=long(1..10)
+num4=short(1..10)
+num5=-5..4
+x1=[52,33,74,49,58,46,88,49,38,45]
+x2=[52,NULL,74,49,NULL,46,NULL,49,NULL,45]
+x3=take(int(), 10)
+x4=1.111 20.48 99.99 0.56 -8.33 20.90 -100 -3.33 -55.6 24.5
+x5=1.111 NULL 99.99 0.56 NULL 20.90 -100 NULL -55.6 24.5
+x6=take(double(), 10)
+
+assert 1, eqObj(tmmed(num1, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 2, eqObj(tmmed(num1, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 3, eqObj(tmmed(num1, x3, 3),take(double(), 10), 3)
+assert 4, eqObj(tmmed(num1, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 2)
+assert 5, eqObj(tmmed(num1, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 2)
+assert 6, eqObj(tmmed(num1, x6, 3),take(double(), 10), 3)
+
+assert 7, eqObj(tmmed(num2, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 8, eqObj(tmmed(num2, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 9, eqObj(tmmed(num2, x3, 3),take(double(), 10), 3)
+assert 10, eqObj(tmmed(num2, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 2)
+assert 11, eqObj(tmmed(num2, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 2)
+assert 12, eqObj(tmmed(num2, x6, 3),take(double(), 10), 3)
+
+assert 13, eqObj(tmmed(num3, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 14, eqObj(tmmed(num3, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 15, eqObj(tmmed(num3, x3, 3),take(double(), 10), 3)
+assert 16, eqObj(tmmed(num3, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 17, eqObj(tmmed(num3, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 18, eqObj(tmmed(num3, x6, 3),take(double(), 10), 3)
+
+assert 19, eqObj(tmmed(num4, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 20, eqObj(tmmed(num4, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 21, eqObj(tmmed(num4, x3, 3),take(double(), 10), 3)
+assert 22, eqObj(tmmed(num4, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 23, eqObj(tmmed(num4, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 24, eqObj(tmmed(num4, x6, 3),take(double(), 10), 3)
+
+assert 25, eqObj(tmmed(num5, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 26, eqObj(tmmed(num5, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 27, eqObj(tmmed(num5, x3, 3),take(double(), 10), 3)
+assert 28, eqObj(tmmed(num5, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 29, eqObj(tmmed(num5, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 30, eqObj(tmmed(num5, x6, 3),take(double(), 10), 3)
+
+@testing:case="function_tmmed_T_temporal_vector"
+num1=date(-5..4)
+num2=datetime(-5..4)
+num3=timestamp(-5..4)
+num4=month(-5..4)
+num5=time(1..10)
+x1=[52,33,74,49,58,46,88,49,38,45]
+x2=[52,NULL,74,49,NULL,46,NULL,49,NULL,45]
+x3=take(int(), 10)
+x4=1.111 20.48 99.99 0.56 -8.33 20.90 -100 -3.33 -55.6 24.5
+x5=1.111 NULL 99.99 0.56 NULL 20.90 -100 NULL -55.6 24.5
+x6=take(double(), 10)
+
+assert 1, eqObj(tmmed(num1, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 2, eqObj(tmmed(num1, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 3, eqObj(tmmed(num1, x3, 3),take(double(), 10), 3)
+assert 4, eqObj(tmmed(num1, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 5, eqObj(tmmed(num1, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 6, eqObj(tmmed(num1, x6, 3),take(double(), 10), 3)
+
+assert 7, eqObj(tmmed(num2, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 8, eqObj(tmmed(num2, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 9, eqObj(tmmed(num2, x3, 3),take(double(), 10), 3)
+assert 10, eqObj(tmmed(num2, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 11, eqObj(tmmed(num2, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 12, eqObj(tmmed(num2, x6, 3),take(double(), 10), 3)
+
+assert 13, eqObj(tmmed(num3, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 14, eqObj(tmmed(num3, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 15, eqObj(tmmed(num3, x3, 3),take(double(), 10), 3)
+assert 16, eqObj(tmmed(num3, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 17, eqObj(tmmed(num3, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 18, eqObj(tmmed(num3, x6, 3),take(double(), 10), 3)
+
+assert 19, eqObj(tmmed(num4, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 20, eqObj(tmmed(num4, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 21, eqObj(tmmed(num4, x3, 3),take(double(), 10), 3)
+assert 22, eqObj(tmmed(num4, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 23, eqObj(tmmed(num4, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 24, eqObj(tmmed(num4, x6, 3),take(double(), 10), 3)
+
+assert 25, eqObj(tmmed(num5, x1, 3),[52,42.5,52,49,58,49,58,49,49,45])
+assert 26, eqObj(tmmed(num5, x2, 3),[52,52,63,61.5,61.5,47.5,46,47.5,49,47])
+assert 27, eqObj(tmmed(num5, x3, 3),take(double(), 10), 3)
+assert 28, eqObj(tmmed(num5, x4, 3),[1.111,10.7955,20.48,20.48,0.56,0.56,-8.33,-3.33,-55.6,-3.33], 1)
+assert 29, eqObj(tmmed(num5, x5, 3),[1.111,1.111,50.5505,50.275,50.275,10.73,-39.55,-39.55,-77.8,-15.55], 1)
+assert 30, eqObj(tmmed(num5, x6, 3),take(double(), 10), 3)
+
+@testing:case="function_tmmed_T_integer_vector_all_same"
+num1=take(1,10)
+num2=char(take(1,10))
+num3=long(take(1,10))
+num4=short(take(1,10))
+num5=-5..4
+x1=[52,33,74,49,58,46,88,49,38,45]
+x2=[52,NULL,74,49,NULL,46,NULL,49,NULL,45]
+x3=take(int(), 10)
+x4=1.111 20.48 99.99 0.56 -8.33 20.90 -100 -3.33 -55.6 24.5
+x5=1.111 NULL 99.99 0.56 NULL 20.90 -100 NULL -55.6 24.5
+x6=take(double(), 10)
+
+assert 1, eqObj(tmmed(num1, x1, 1), [52,42.5,52,50.5,52,50.5,52,50.5,49,49])
+assert 2, eqObj(tmmed(num1, x2, 2), [52,52,63,52,52,50.5,50.5,49,49,49])
+assert 3, eqObj(tmmed(num1, x3, 3), take(double(), 10), 3)
+assert 4, eqObj(tmmed(num1, x4, 3), [1.111,10.7955,20.48,10.7955,1.111,10.7955,1.111,0.8355,0.56,0.8355], 3)
+assert 5, eqObj(tmmed(num1, x5, 3), [1.111,1.111,50.5505,1.111,1.111,11.0055,1.111,1.111,0.8355,1.111], 3)
+assert 6, eqObj(tmmed(num1, x6, 3),take(double(), 10), 3)
+
+assert 7, eqObj(tmmed(num2, x1, 1), [52,42.5,52,50.5,52,50.5,52,50.5,49,49])
+assert 8, eqObj(tmmed(num2, x2, 3), [52,52,63,52,52,50.5,50.5,49,49,49])
+assert 9, eqObj(tmmed(num2, x3, 3), take(double(), 10), 3)
+assert 10, eqObj(tmmed(num2, x4, 3),[1.111,10.7955,20.48,10.7955,1.111,10.7955,1.111,0.8355,0.56,0.8355], 3)
+assert 11, eqObj(tmmed(num2, x5, 3),[1.111,1.111,50.5505,1.111,1.111,11.0055,1.111,1.111,0.8355,1.111], 3)
+assert 12, eqObj(tmmed(num2, x6, 3),take(double(), 10), 3)
+
+assert 13, eqObj(tmmed(num3, x1, 3), [52,42.5,52,50.5,52,50.5,52,50.5,49,49])
+assert 14, eqObj(tmmed(num3, x2, 3), [52,52,63,52,52,50.5,50.5,49,49,49])
+assert 15, eqObj(tmmed(num3, x3, 3),take(double(), 10), 3)
+assert 16, eqObj(tmmed(num3, x4, 3),[1.111,10.7955,20.48,10.7955,1.111,10.7955,1.111,0.8355,0.56,0.8355], 3)
+assert 17, eqObj(tmmed(num3, x5, 3),[1.111,1.111,50.5505,1.111,1.111,11.0055,1.111,1.111,0.8355,1.111], 3)
+assert 18, eqObj(tmmed(num3, x6, 3),take(double(), 10), 3)
+
+assert 19, eqObj(tmmed(num4, x1, 3),[52,42.5,52,50.5,52,50.5,52,50.5,49,49])
+assert 20, eqObj(tmmed(num4, x2, 3),[52,52,63,52,52,50.5,50.5,49,49,49])
+assert 21, eqObj(tmmed(num4, x3, 3),take(double(), 10), 3)
+assert 22, eqObj(tmmed(num4, x4, 3),[1.111,10.7955,20.48,10.7955,1.111,10.7955,1.111,0.8355,0.56,0.8355]  , 3)
+assert 23, eqObj(tmmed(num4, x5, 3),[1.111,1.111,50.5505,1.111,1.111,11.0055,1.111,1.111,0.8355,1.111], 3)
+assert 24, eqObj(tmmed(num4, x6, 3),take(double(), 10), 3)
+
+assert 25, eqObj(tmmed(num5, x1, 2),[52,42.5,53.5,61.5,53.5,52,67,68.5,43.5,41.5])
+assert 26, eqObj(tmmed(num5, x2, 2),[52,52,74,61.5,49,46,46,49,49,45])
+assert 27, eqObj(tmmed(num5, x3, 2),take(double(), 10), 3)
+assert 28, eqObj(tmmed(num5, x4, 2),[1.111,10.7955,60.235,50.275,-3.885,6.285,-39.55,-51.665,-29.465,-15.55], 3)
+assert 29, eqObj(tmmed(num5, x5, 2),[1.111,1.111,99.99,50.2750,0.56,20.90,-39.55,-100,-55.600,-15.55], 3)
+assert 30, eqObj(tmmed(num5, x6, 3),take(double(), 10), 3)
+
+@testing:case="function_tmmed_T_integer_vector_different_interval"
+num1=[-5, -2, 0, 1, 4, 4, 5, 12, 13, 14]
+num2=[-5, -2, 1, 4, 7, 10, 13, 15, 18, 21]
+num3=[-5, -3, -1, 1, 3, 5, 7, 9, 11, 13]
+num4=[-5, -1, 3, 7, 11, 11, 15, 15, 16, 16]
+x1=[52,23,74,49,14,46,NULL,49,NULL,45]
+
+assert 1, eqObj(tmmed(num1, x1, 3), [52,23,48.5,61.5,14,30,30,49,49,47])
+assert 2, eqObj(tmmed(num1, x1, 1), [52,23,74,49,14,30,,49,,45.0])
+assert 3, eqObj(tmmed(num1, x1, 2), [52,23,74,61.5,14,30,30,49,49,45])
+assert 4, eqObj(tmmed(num1, x1, 4), [52,37.5,48.5,49,31.5,46,30,49,49,47])
+assert 5, eqObj(tmmed(num1, x1,10), [52,37.5,52,50.5,49,47.5,46,46,46,47])
+assert 6, eqObj(tmmed(num1, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 7, eqObj(tmmed(num2, x1, 3), [52.0,23,74,49,14,46,,49,,45])
+assert 8, eqObj(tmmed(num2, x1, 2), [52.0,23,74,49,14,46,,49,,45])
+assert 9, eqObj(tmmed(num2, x1, 1), [52.0,23,74,49,14,46,,49,,45])
+assert 10, eqObj(tmmed(num2, x1, 4), [52.0,37.5,48.5,61.5,31.5,30,46,49,49,45])
+assert 11, eqObj(tmmed(num2, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 12, eqObj(tmmed(num3, x1, 3), [52,37.5,48.5,61.5,31.5,30,46,49,49,45])
+assert 13, eqObj(tmmed(num3, x1, 2), [52.0,23,74,49,14,46,,49,,45])
+assert 14, eqObj(tmmed(num3, x1, 1), [52.0,23,74,49,14,46,,49,,45])
+assert 15, eqObj(tmmed(num3, x1, 4), [52.0,37.5,48.5,61.5,31.5,30,46,49,49,45])
+assert 16, eqObj(tmmed(num3, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 17, eqObj(tmmed(num4, x1, 3), [52,23,74,49,14,30,,49,49,47.0])
+assert 18, eqObj(tmmed(num4, x1, 2), [52,23,74,49,14,30,,49,49,47.0])
+assert 19, eqObj(tmmed(num4, x1, 1), [52.0,23,74,49,14,30,,49,,45])
+assert 20, eqObj(tmmed(num4, x1, 4), [52,23,74,49,14,30.0,,49,49,47])
+assert 21, eqObj(tmmed(num4, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+@testing:case="function_tmmed_T_timestamp_vector_different_interval"
+num1=timestamp([-5, -2, 0, 1, 4, 4, 5, 12, 13, 14])
+num2=timestamp([1969.12.19, 1969.12.22, 1969.12.25, 1969.12.31, 1970.01.01, 1970.01.03, 1970.01.06, 1970.01.08, 1970.01.10, 1970.01.11])
+num3=1969.11.19T12:34:56.324 1969.12.19T12:34:56.324 1969.12.20T12:34:56.324 1970.01.12T12:24:26.125 1970.01.24T12:24:26.125 1970.01.29T12:24:26.125 1970.01.29T12:24:26.125 1970.02.12T12:24:26.125 1971.02.20T12:24:26.125 1971.02.21T12:24:26.125
+x1=[52,23,74,49,14,46,NULL,49,NULL,45]
+
+assert 1, eqObj(tmmed(num1, x1, 3), [52,23,48.5,61.5,14,30,30,49,49,47])
+assert 2, eqObj(tmmed(num1, x1, 1), [52,23,74,49,14,30.0,,49,,45])
+assert 3, eqObj(tmmed(num1, x1, 2), [52,23,74,61.5,14,30,30,49,49,45])
+assert 4, eqObj(tmmed(num1, x1, 4), [52,37.5,48.5,49,31.5,46,30,49,49,47])
+assert 5, eqObj(tmmed(num1, x1,10), [52,37.5,52,50.5,49,47.5,46,46,46,47])
+assert 6, eqObj(tmmed(num1, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 7, eqObj(tmmed(num1, x1, 3d), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 8, eqObj(tmmed(num1, x1, 3ns), [52.0,23,74,49,14,46,,49,,45])
+assert 9, eqObj(tmmed(num1, x1, 3H), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 10, eqObj(tmmed(num1, x1, 3us), [52.0,23,74,49,14,46,,49,,45])
+assert 11, eqObj(tmmed(num1, x1, 3m), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 12, eqObj(tmmed(num2, x1, 3d), [52,23,74,49,31.5,30,,49,49,45])
+assert 13, eqObj(tmmed(num2, x1, 2w), [52,37.5,52,50.5,49,46,47.5,47.5,47.5,46])
+assert 14, eqObj(tmmed(num3, x1, 2M), [52,37.5,52,50.5,36,46,46,47.5,,45])
+assert 15, eqObj(tmmed(num3, x1, 1y), [52,37.5,52,50.5,49,47.5,47.5,49,,45])
+assert 16, eqObj(tmmed(num3, x1, 2B), [52,23,48.5,49,14,46,46,49,,45])
+
+@testing:case="function_tmmed_T_date_vector_different_interval"
+num1=date([-5, -2, 0, 1, 4, 4, 5, 12, 13, 14])
+num2=date([1969.12.19, 1969.12.22, 1969.12.25, 1969.12.31, 1970.01.01, 1970.01.03, 1970.01.06, 1970.01.08, 1970.01.10, 1970.01.11])
+num3=1969.11.19 1969.12.19 1969.12.20 1970.01.12 1970.01.24 1970.01.29 1970.01.29 1970.02.12 1971.02.20 1971.02.21
+x1=[52,23,74,49,14,46,NULL,49,NULL,45]
+
+assert 1, eqObj(tmmed(num1, x1, 3), [52,23,48.5,61.5,14,30,30,49,49,47])
+assert 2, eqObj(tmmed(num1, x1, 1), [52,23,74,49,14,30.0,,49,,45])
+assert 3, eqObj(tmmed(num1, x1, 2), [52,23,74,61.5,14,30,30,49,49,45])
+assert 4, eqObj(tmmed(num1, x1, 4), [52,37.5,48.5,49,31.5,46,30,49,49,47])
+assert 5, eqObj(tmmed(num1, x1,10), [52,37.5,52,50.5,49,47.5,46,46,46,47])
+assert 6, eqObj(tmmed(num1, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 7, eqObj(tmmed(num1, x1, 3d), [52,23,48.5,61.5,14,30,30,49,49,47])
+assert 8, eqObj(tmmed(num1, x1, 3ns), [52.0,23,74,49,14,46,,49,,45])
+assert 9, eqObj(tmmed(num1, x1, 3H), [52.0,23,74,49,14,46,,49,,45])
+assert 10, eqObj(tmmed(num1, x1, 3us), [52.0,23,74,49,14,46,,49,,45])
+assert 11, eqObj(tmmed(num1, x1, 3m), [52.0,23,74,49,14,46,,49,,45])
+
+assert 12, eqObj(tmmed(num2, x1, 3d), [52,23,74,49,31.5,30,,49,49,45])
+assert 13, eqObj(tmmed(num2, x1, 2w), [52,37.5,52,50.5,49,46,47.5,47.5,47.5,46])
+assert 14, eqObj(tmmed(num3, x1, 2M), [52,37.5,52,50.5,36,46,46,47.5,,45])
+assert 15, eqObj(tmmed(num3, x1, 1y), [52,37.5,52,50.5,49,47.5,47.5,49,,45])
+assert 16, eqObj(tmmed(num3, x1, 2B), [52,23,48.5,49,14,46,46,49,,45])
+
+@testing:case="function_tmmed_T_datetime_vector_different_interval"
+num1=datetime([-5, -2, 0, 1, 4, 4, 5, 12, 13, 14])
+num2=datetime([1969.12.19, 1969.12.22, 1969.12.25, 1969.12.31, 1970.01.01, 1970.01.03, 1970.01.06, 1970.01.08, 1970.01.10, 1970.01.11])
+x1=[52,23,74,49,14,46,NULL,49,NULL,45]
+
+assert 1, eqObj(tmmed(num1, x1, 3), [52,23,48.5,61.5,14,30,30,49,49,47])
+assert 2, eqObj(tmmed(num1, x1, 1), [52,23,74,49,14,30.0,,49,,45])
+assert 3, eqObj(tmmed(num1, x1, 2), [52,23,74,61.5,14,30,30,49,49,45])
+assert 4, eqObj(tmmed(num1, x1, 4), [52,37.5,48.5,49,31.5,46,30,49,49,47])
+assert 5, eqObj(tmmed(num1, x1,10), [52,37.5,52,50.5,49,47.5,46,46,46,47])
+assert 6, eqObj(tmmed(num1, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 7, eqObj(tmmed(num1, x1, 3d), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 8, eqObj(tmmed(num1, x1, 3ns), [52.0,23,74,49,14,46,,49,,45])
+assert 9, eqObj(tmmed(num1, x1, 3H), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 10, eqObj(tmmed(num1, x1, 3us), [52.0,23,74,49,14,46,,49,,45])
+assert 11, eqObj(tmmed(num1, x1, 3m), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 12, eqObj(tmmed(num2, x1, 3d), [52,23,74,49,31.5,30,,49,49,45])
+assert 13, eqObj(tmmed(num2, x1, 2w), [52,37.5,52,50.5,49,46,47.5,47.5,47.5,46])
+assert 14, eqObj(tmmed(num3, x1, 2M), [52,37.5,52,50.5,36,46,46,47.5,,45])
+assert 15, eqObj(tmmed(num3, x1, 1y), [52,37.5,52,50.5,49,47.5,47.5,49,,45])
+assert 16, eqObj(tmmed(num2, x1, 2B), [52,37.5,74,49,31.5,46,46,49,,45])
+
+@testing:case="function_tmmed_T_time_vector_different_interval"
+num1=time([1, 1, 3, 9, 9, 10, 11, 11, 12, 14])
+x1=[52,23,74,49,14,46,NULL,49,NULL,45]
+
+assert 1, eqObj(tmmed(num1, x1, 3), [52,37.5,52,49,31.5,46,46,47.5,47.5,45])
+assert 2, eqObj(tmmed(num1, x1, 1), [52,37.5,74,49,31.5,46,,49,,45])
+assert 3, eqObj(tmmed(num1, x1, 2), [52,37.5,74,49,31.5,46,46,47.5,49,45])
+assert 4, eqObj(tmmed(num1, x1, 4), [52,37.5,52,49,31.5,46,46,47.5,47.5,47])
+assert 5, eqObj(tmmed(num1, x1,10), [52,37.5,52,50.5,49,47.5,47.5,49,49,46])
+assert 6, eqObj(tmmed(num1, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 7, eqObj(tmmed(num1, x1, 3d), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 8, eqObj(tmmed(num1, x1, 3ns), [52.0,23,74,49,14,46,,49,,45])
+assert 9, eqObj(tmmed(num1, x1, 3H), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 10, eqObj(tmmed(num1, x1, 3us), [52.0,23,74,49,14,46,,49,,45])
+assert 11, eqObj(tmmed(num1, x1, 3m), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 12, eqObj(tmmed(num2, x1, 3d), [52,23,74,49,31.5,30,,49,49,45])
+assert 13, eqObj(tmmed(num2, x1, 2w), [52,37.5,52,50.5,49,46,47.5,47.5,47.5,46])
+assert 14, eqObj(tmmed(num2, x1, 1M), [52,37.5,52,50.5,49,46,,49,,45])
+assert 15, eqObj(tmmed(num2, x1, 1y), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 16, eqObj(tmmed(num2, x1, 2B), [52,37.5,74,49,31.5,46,46,49,,45])
+
+@testing:case="function_tmmed_T_month_vector_different_interval"
+num1=month([1, 1, 3, 9, 9, 10, 11, 11, 12, 14])
+x1=[52,23,74,49,14,46,NULL,49,NULL,45]
+
+assert 1, eqObj(tmmed(num1, x1, 3), [52,37.5,52,49,31.5,46,46,47.5,47.5,45])
+assert 2, eqObj(tmmed(num1, x1, 1), [52,37.5,74,49,31.5,46,,49,,45])
+assert 3, eqObj(tmmed(num1, x1, 2), [52,37.5,74,49,31.5,46,46,47.5,49,45])
+assert 4, eqObj(tmmed(num1, x1, 4), [52,37.5,52,49,31.5,46,46,47.5,47.5,47])
+assert 5, eqObj(tmmed(num1, x1,10), [52,37.5,52,50.5,49,47.5,47.5,49,49,46])
+assert 6, eqObj(tmmed(num1, x1, 1024), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+
+assert 7, eqObj(tmmed(num1, x1, 3d), [52.0,23,74,49,14,46,,49,,45])
+assert 8, eqObj(tmmed(num1, x1, 3ns), [52.0,23,74,49,14,46,,49,,45])
+assert 9, eqObj(tmmed(num1, x1, 3H), [52.0,23,74,49,14,46,,49,,45])
+assert 10, eqObj(tmmed(num1, x1, 3us), [52.0,23,74,49,14,46,,49,,45])
+assert 11, eqObj(tmmed(num1, x1, 3m), [52.0,23,74,49,14,46,,49,,45])
+
+assert 12, eqObj(tmmed(num2, x1, 3d), [52,23,74,49,31.5,30,,49,49,45])
+assert 13, eqObj(tmmed(num2, x1, 2w), [52,37.5,52,50.5,49,46,47.5,47.5,47.5,46])
+assert 14, eqObj(tmmed(num2, x1, 1M), [52,37.5,52,50.5,49,46,,49,,45])
+assert 15, eqObj(tmmed(num2, x1, 1y), [52,37.5,52,50.5,49,47.5,47.5,49,49,47.5])
+assert 16, eqObj(tmmed(num2, x1, 2B), [52,37.5,74,49,31.5,46,46,49,,45])
+
+@testing:case="function_tmmed_vector_all_NULL_1024"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1024)
+	return tmmed(datatype1(1..1024),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, short, long, date, time, second, minute, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_vector_all_NULL_2^20"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	return tmmed(datatype1(1..1048576),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	return tmmed(datatype1(rand(100,1048576).sort()),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_vector_all_NULL_3000000"
+def f1(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	return tmmed(datatype1(1..3000000),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	return tmmed(datatype1(rand(100,3000000).sort()),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_NULL_1024"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1024)
+	x = subarray(x,0:1024)
+	return tmmed(datatype1(1..1024),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, short, long, date, time, second, minute, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_NULL_2^20"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	x = subarray(x,0:1048576)
+	return tmmed(datatype1(1..1048576),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	x = subarray(x,0:1048576)
+	return tmmed(datatype1(rand(100,1048576).sort()),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_NULL_3000000"
+def f1(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	x = subarray(x,0:3000000)
+	return tmmed(datatype1(1..3000000),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	x = subarray(x,0:3000000)
+	return tmmed(datatype1(rand(100,3000000).sort()),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_bigarray_all_NULL_1024"
+def f1(datatype1,datatype2) {
+	n = 2000000
+	x = take(int(), 1024)
+	x = bigarray(int,0,n*10).append!(x)
+	return tmmed(datatype1(1..1024),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, short, long, date, time, second, minute, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_bigarray_all_NULL_2^20"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	n = 2000000
+	x = bigarray(int,0,n*10).append!(x)
+	return tmmed(datatype1(1..1048576),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	n = 2000000
+	x = bigarray(int,0,n*10).append!(x)
+	return tmmed(datatype1(rand(100,1048576).sort()),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_NULL_3000000"
+def f1(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	n = 3000000
+	x = bigarray(int,0,n*10).append!(x)
+	return tmmed(datatype1(1..3000000),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	n = 3000000
+	x = bigarray(int,0,n*10).append!(x)
+	return tmmed(datatype1(rand(100,3000000).sort()),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_vector_all_same_1024"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1024)
+	T = take(1,1024)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, short, long, date, time, second, minute, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_vector_all_same_2^20"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	T = take(1,1048576)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	T = take(1,1048576)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_vector_all_same_3000000"
+def f1(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	T = take(1,3000000)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	T = take(1,3000000)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_same_1024"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1024)
+	x = subarray(x,0:1024)
+	T = take(1,1024)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, short, long, date, time, second, minute, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_same_2^20"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	x = subarray(x,0:1048576)
+	T = take(1,1048576)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	x = subarray(x,0:1048576)
+	T = take(1,1048576)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_same_3000000"
+def f1(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	x = subarray(x,0:3000000)
+	T = take(1,3000000)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	x = subarray(x,0:3000000)
+	T = take(1,3000000)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_bigarray_all_same_1024"
+def f1(datatype1,datatype2) {
+	n = 2000000
+	x = take(int(), 1024)
+	x = bigarray(int,0,n*10).append!(x)
+	T = take(1,1024)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, short, long, date, time, second, minute, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_bigarray_all_same_2^20"
+def f1(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	n = 2000000
+	x = bigarray(int,0,n*10).append!(x)
+	T = take(1,1048576)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 1048576)
+	n = 2000000
+	x = bigarray(int,0,n*10).append!(x)
+	T = take(1,1048576)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_subarray_all_same_3000000"
+def f1(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	n = 3000000
+	x = bigarray(int,0,n*10).append!(x)
+	T = take(1,3000000)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 1, cross(f1,[int, long, date, time, timestamp, nanotimestamp, nanotime, datetime, datehour, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	x = take(int(), 3000000)
+	n = 3000000
+	x = bigarray(int,0,n*10).append!(x)
+	T = take(1,3000000)
+	return tmmed(datatype1(T),datatype2(x), 3)==NULL
+}
+assert 2, cross(f2,[short, second, minute],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_all_datatypes"
+def f1(datatype1,datatype2) {
+	T=1..10
+	x=7 10 2 6 11 25 69 80 17 12
+	re=tmmed(datatype1(T), datatype2(x), 3)
+	expected=[7,8.5,7,6,6,11,25,69,69,17]
+	return eqObj(re,expected,4)
+}
+assert 1, cross(f1,[int, short, long, date, datehour, timestamp, minute, second, nanotimestamp, nanotime, time, month],[char, int, short, long, float, double])
+
+def f2(datatype1,datatype2) {
+	T=1..10
+	x=7 NULL 2 6 11 NULL 69 80 17 12
+	tmmed(char(T),char(x),3)
+	re=tmmed(datatype1(T), datatype2(x), 3)
+	expected=[7,7,4.5,4,6,8.5,40,74.5,69,17]
+	return eqObj(re,expected,4)
+}
+assert 2, cross(f2,[int, short, long, date, datehour, timestamp, minute, second, nanotimestamp, nanotime, time, month],[char, int, short, long, float, double])
+
+def f3(datatype1,datatype2) {
+	T=1..10
+	x=take(double(),10)
+	re=tmmed(datatype1(T), datatype2(x), 3)
+	expected=take(double(),10)
+	return eqObj(re,expected,4)
+}
+assert 3, cross(f3,[int, short, long, date, datehour, timestamp, minute, second, nanotimestamp, nanotime, time, month],[char, int, short, long, float, double])
+
+def f4(datatype1,datatype2) {
+	T=[-5, -2, -1, 0, 1, 10, 10, 11, 15, 17]
+	x=7 10 2 6 11 25 69 80 17 12
+	re=tmmed(datatype1(T), datatype2(x), 3)
+	expected=[7,10,6,6,6,25,47,69,17,14.5]
+	return eqObj(re,expected,4)
+}
+assert 4, cross(f4,[int, short, long, date, datehour, timestamp, nanotimestamp, month],[char, int, short, long, float, double])
+
+def f5(datatype1,datatype2) {
+	T=[-5, -2, -1, 0, 1, 10, 10, 11, 15, 17]
+	x=7 10 2 6 11 25 69 80 17 12
+	re=tmmed(datatype1(T), datatype2(x), 2)
+	expected=[7,10,6,4,8.5,25,47,69,17,12]
+	return eqObj(re,expected,4)
+}
+assert 5, cross(f5,[int, short, long, date, datehour, timestamp, nanotimestamp, month],[char, int, short, long, float, double])
+
+def f6(datatype1,datatype2) {
+	T=[-5, -2, -1, 0, 1, 10, 10, 11, 15, 17]
+	x=7 10 2 6 11 25 69 80 17 12
+	re=tmmed(datatype1(T), datatype2(x), 1024)
+	expected=[7,8.5,7,6.5,7,8.5,10,10.5,11,11.5]
+	return eqObj(re,expected,4)
+}
+assert 6, cross(f6,[int, short, long, date, datehour, timestamp, nanotimestamp, month],[char, int, short, long, float, double])
+
+@testing:case="function_tmmed_array_random_T_1024"
+def checktmmed(T, num, siz, window){
+	expected=array(double, 0)
+	for (i in 0..(siz-1)){
+		arr=array(double, 0)
+		for(j in i..0){
+			if(T[i] - T[j] < window){
+				arr.append!(num[j])
+			}
+		}
+		expected.append!(med(arr))
+	}
+	return expected
+}
+
+T=rand(1024, 1024).sort()
+num=take([98,24,96,66,26,87,98,75,63,49],1024)
+siz=size(T)
+window=3
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 1, eqObj(re, ex, 3)
+
+window=1024
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 2, eqObj(re, ex, 3)
+
+window=1023
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 3, eqObj(re, ex, 3)
+
+window=1
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 4, eqObj(re, ex, 3)
+
+window=1025
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 5, eqObj(re, ex, 3)
+
+@testing:case="function_tmmed_array_random_T_timstamp_1024"
+T=rand(1969.12.31T23:59:57.123 +1..200000, 1024).sort()
+num=take([98,24,96,66,26,87,98,75,63,49],1024)
+siz=size(T)
+window=3
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 1, eqObj(re, ex, 3)
+
+window=1024
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 2, eqObj(re, ex, 3)
+
+window=1023
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 3, eqObj(re, ex, 3)
+
+window=1
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 4, eqObj(re, ex, 3)
+
+window=1025
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 5, eqObj(re, ex, 3)
+
+@testing:case="function_tmmed_array_random_T_date_1024"
+T=rand(1969.01.01+1..200000, 1024).sort()
+num=take([98,24,96,66,26,87,98,75,63,49],1024)
+siz=size(T)
+window=3
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 1, eqObj(re, ex, 3)
+
+window=1024
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 2, eqObj(re, ex, 3)
+
+window=1023
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 3, eqObj(re, ex, 3)
+
+window=1
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 4, eqObj(re, ex, 3)
+
+window=1025
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 5, eqObj(re, ex, 3)
+
+@testing:case="function_tmmed_subarray_random_T_1024"
+T=rand(1024, 1024).sort()
+T=subarray(T,0:1024)
+num=take([98,24,96,66,26,87,100,75,63,49],1024)
+num=subarray(num,0:1024)
+siz=size(T)
+window=3
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 1, eqObj(re, ex, 3)
+
+window=1024
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 2, eqObj(re, ex, 3)
+
+window=1023
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 3, eqObj(re, ex, 3)
+
+window=1
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 4, eqObj(re, ex, 3)
+
+window=1025
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 5, eqObj(re, ex, 3)
+
+@testing:case="function_tmmed_subarray_random_T_timstamp_1024"
+T=rand(1969.12.31T23:59:57.123 +1..200000, 1024).sort()
+T=subarray(T,0:1024)
+num=take([98,24,96,66,26,87,100,75,63,49],1024)
+num=subarray(num,0:1024)
+siz=size(T)
+window=3
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 1, eqObj(re, ex, 3)
+
+window=1024
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 2, eqObj(re, ex, 3)
+
+window=1023
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 3, eqObj(re, ex, 3)
+
+window=1
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 4, eqObj(re, ex, 3)
+
+window=1025
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 5, eqObj(re, ex, 3)
+
+@testing:case="function_tmmed_subarray_random_T_date_1024"
+T=rand(1969.01.01+1..200000, 1024).sort()
+T=subarray(T,0:1024)
+num=take([98,24,96,66,26,87,100,75,63,49],1024)
+num=subarray(num,0:1024)
+siz=size(T)
+window=3
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 1, eqObj(re, ex, 3)
+
+window=1024
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 2, eqObj(re, ex, 3)
+
+window=1023
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 3, eqObj(re, ex, 3)
+
+window=1
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 4, eqObj(re, ex, 3)
+
+window=1025
+ex=checktmmed(T, num, siz, window)
+re=tmmed(T, num, window)
+assert 5, eqObj(re, ex, 3)
+
+/*
+@testing:case="function_tmmed_T_1048576"
+arr=array(int,0)
+for (i in 1..1048576){
+	if(i % 2 == 0){
+		arr.append!(i)
+	}
+}
+T=take(arr, 1048576).sort()
+num=take([98,24,96,66,26,87,98,75,63,49],1048576)
+ex=[98, 61, 96, 81, 66, 76.5, 87, 81, 75, 69] join take([63, 56, 96, 81, 66, 76.5, 87, 81, 75, 69], 1048566)
+assert 1, eqObj(tmmed(T, num, 3), ex)
+
+T=take(arr, 1048576).sort()
+T=subarray(T,0:1048576)
+num=take([98,24,96,66,26,87,98,75,63,49],1048576)
+num=subarray(num,0:1048576)
+ex=[98, 61, 96, 81, 66, 76.5, 87, 81, 75, 69] join take([63, 56, 96, 81, 66, 76.5, 87, 81, 75, 69], 1048566)
+assert 2, eqObj(tmmed(T, num, 3), ex, 2)
+
+T=take(arr, 1048576).sort()
+T=bigarray(int,0,n*10).append!(T)
+num=take([98,24,96,66,26,87,98,75,63,49],1048576)
+num=bigarray(int,0,n*10).append!(num)
+ex=[98, 61, 96, 81, 66, 76.5, 87, 81, 75, 69] join take([63, 56, 96, 81, 66, 76.5, 87, 81, 75, 69], 1048566)
+assert 3, eqObj(tmmed(T, num, 3), ex, 2)
+
+@testing:case="function_tmmed_T_3000000"
+arr=array(int,0)
+for (i in 1..3000000){
+	if(i % 2 == 0){
+		arr.append!(i)
+	}
+}
+T=take(arr, 3000000).sort()
+num=take([98,24,96,66,26,87,98,75,63,49],3000000)
+ex=[98, 61, 96, 81, 66, 76.5, 87, 81, 75, 69] join take([63, 56, 96, 81, 66, 76.5, 87, 81, 75, 69], 2999990)
+assert 1, eqObj(tmmed(T, num, 3), ex, 2)
+
+T=take(arr, 3000000).sort()
+T=subarray(T,0:3000000)
+num=take([98,24,96,66,26,87,98,75,63,49],3000000)
+num=subarray(num,0:3000000)
+ex=[98, 61, 96, 81, 66, 76.5, 87, 81, 75, 69] join take([63, 56, 96, 81, 66, 76.5, 87, 81, 75, 69], 2999990)
+assert 2, eqObj(tmmed(T, num, 3), ex, 2)
+
+T=take(arr, 3000000).sort()
+T=bigarray(int,0,n*10).append!(T)
+num=take([98,24,96,66,26,87,98,75,63,49],3000000)
+num=bigarray(int,0,n*10).append!(num)
+ex=[98, 61, 96, 81, 66, 76.5, 87, 81, 75, 69] join take([63, 56, 96, 81, 66, 76.5, 87, 81, 75, 69], 2999990)
+assert 3, eqObj(tmmed(T, num, 3), ex, 2)
+*/
+@testing:case="function_tmmed_table_prepare_value_small_data"
+dbName = "dfs://test_tmmed"
+if(existsDatabase(dbName)){
+	dropDatabase(dbName)
+}
+t = table(1:0, [`symbol, `name, `ID, `price1, `price2, `timestamp, `date], [SYMBOL, STRING, INT, FLOAT, DOUBLE, TIMESTAMP, DATE])
+db = database(directory=dbName, partitionType=VALUE, partitionScheme=2020.01.01..2020.02.20)
+pt = db.createPartitionedTable(table=t, tableName=`pt, partitionColumns=`timestamp)
+dt = db.createTable(table=t, tableName=`dt)
+
+n = 1000
+exTable = table(n:0, [`symbol, `name, `ID, `price1, `price2, `timestamp, `date], [SYMBOL, STRING, INT, FLOAT, DOUBLE, TIMESTAMP, DATE])
+dataTable = table(take(`A`B`C`D`E, n) as symbol, rand("name" + string(1..10), n) as name, rand(1..n, n) as id, rand(rand(100.0f,1000) join take(float(),100),n) as price1, rand(rand(100.0,1000) join take(double(),100),n) as price2, take(temporalAdd(2020.01.01T12:23:24.345, (1..n), `h), n) as timestamp, take(2020.01.01 + 1..50, n).sort() as date)
+
+exTable.append!(dataTable)
+pt.append!(dataTable)
+dt.append!(dataTable)
+
+@testing:case="function_tmmed_dfs_table"
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3H) from ex
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3d) from ex
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3s) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3s) from ex
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3y) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3y) from ex
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3M) from ex
+assert 5, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3m) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3m) from ex
+assert 6, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 2B) from ex
+assert 7, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2ms) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 2ms) from ex
+assert 8, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(date, ID, 3d) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(date, ID, 3d) from ex
+assert 9, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_dt_table"
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3H) from ex
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3d) from ex
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3s) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3s) from ex
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3y) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3y) from ex
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3M) from ex
+assert 5, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3m) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3m) from ex
+assert 6, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 2B) from ex
+assert 7, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2ms) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 2ms) from ex
+assert 8, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(date, ID, 3d) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(date, ID, 3d) from ex
+assert 9, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_dfs_table_context_by"
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3d) as tmmed from ex context by symbol
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 2B) as tmmed from ex context by symbol
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3H) as tmmed from ex context by symbol
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3M) as tmmed from ex context by symbol
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_dt_table_context_by"
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3d) as tmmed from ex context by symbol
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 2B) as tmmed from ex context by symbol
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3H) as tmmed from ex context by symbol
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3M) as tmmed from ex context by symbol
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_table_prepare_value_bigdata_data"
+dbName = "dfs://test_tmmed_big_data"
+if(existsDatabase(dbName)){
+	dropDatabase(dbName)
+}
+t = table(1:0, [`symbol, `name, `ID, `price1, `price2, `timestamp, `date], [SYMBOL, STRING, INT, FLOAT, DOUBLE, TIMESTAMP, DATE])
+db = database(directory=dbName, partitionType=VALUE, partitionScheme=2020.01.01..2020.02.20)
+pt = db.createPartitionedTable(table=t, tableName=`pt, partitionColumns=`timestamp)
+dt = db.createTable(table=t, tableName=`dt)
+
+n = 1048580
+exTable = table(n:0, [`symbol, `name, `ID, `price1, `price2, `timestamp, `date], [SYMBOL, STRING, INT, FLOAT, DOUBLE, TIMESTAMP, DATE])
+dataTable = table(take(`A`B`C`D`E, n) as symbol, rand("name" + string(1..10), n) as name, rand(1..n, n) as id, rand(rand(100.0f,1000) join take(float(),100),n) as price1, rand(rand(100.0,1000) join take(double(),100),n) as price2, take(temporalAdd(2020.01.01T12:23:24.345, (1..1000), `h), n).sort() as timestamp, take(2020.01.01 + 1..50, n).sort() as date)
+
+exTable.append!(dataTable)
+pt.append!(dataTable)
+dt.append!(dataTable)
+
+@testing:case="function_tmmed_dfs_table_bigdata"
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3H) from ex
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3d) from ex
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3s) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3s) from ex
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3y) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3y) from ex
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3M) from ex
+assert 5, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3m) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3m) from ex
+assert 6, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 2B) from ex
+assert 7, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2ms) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 2ms) from ex
+assert 8, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(date, ID, 3d) as tmmed from loadTable(dbName, `pt)
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(date, ID, 3d) from ex
+assert 9, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_dt_table_bigdata"
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3H) from ex
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3d) from ex
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3s) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3s) from ex
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3y) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3y) from ex
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3M) from ex
+assert 5, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3m) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3m) from ex
+assert 6, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 2B) from ex
+assert 7, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2ms) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 2ms) from ex
+assert 8, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(date, ID, 3d) as tmmed from loadTable(dbName, `dt)
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(date, ID, 3d) from ex
+assert 9, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_dfs_table_context_by_bigdata"
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3d) as tmmed from ex context by symbol
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 2B) as tmmed from ex context by symbol
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3H) as tmmed from ex context by symbol
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `pt) context by symbol
+ex=select * from loadTable(dbName, `pt)
+ex=select tmmed(timestamp, ID, 3M) as tmmed from ex context by symbol
+assert 4, eqObj(re.values(), ex.values(), 3)
+
+@testing:case="function_tmmed_dt_table_context_by_bigdata"
+re=select tmmed(timestamp, ID, 3d) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3d) as tmmed from ex context by symbol
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 2B) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 2B) as tmmed from ex context by symbol
+assert 2, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3H) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3H) as tmmed from ex context by symbol
+assert 3, eqObj(re.values(), ex.values(), 3)
+
+re=select tmmed(timestamp, ID, 3M) as tmmed from loadTable(dbName, `dt) context by symbol
+ex=select * from loadTable(dbName, `dt)
+ex=select tmmed(timestamp, ID, 3M) as tmmed from ex context by symbol
+assert 4, eqObj(re.values(), ex.values(), 3)
+/***
+@testing:case="function_tmmed_compare_with_python"
+t=loadText(DATA_DIR+ "USPrices_FIRST.csv")
+ex=loadText(DATA_DIR+ "TMMED.csv")
+re=select tmmed(date, PRC, 10) as tmmed from t 
+ex=select PRC from ex
+assert 1, eqObj(re.values(), ex.values(), 3)
+
+
+
+
+

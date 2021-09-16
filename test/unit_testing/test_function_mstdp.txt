@@ -1,0 +1,213 @@
+
+@testing:case="test_function_mstdp_index_not_the_first_one_is_null",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20])
+m.rename!([1, 2, NULL, 4, 5, 6, 7, 8, 9, 10], `A`B) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_index_all_null",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) 
+m.rename!(take(double(),10), `A`B) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_column_label_isn't_set",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) 
+m.rename!(, `A`B) 
+m.setIndexedMatrix!(true)
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_IndexedMatrix_the_size_of_column_label_more_than_matrix",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) 
+m.rename!(2020.01.01..2020.01.10, `A`B`C) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_the_size_of_column_label_less_than_matrix",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) 
+m.rename!(1..10, `A)
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_no_label_name",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20])
+m.rename!(1..10, ) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_label_not_a_vector",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5])
+m.rename!(string(1..10), `A) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_index_is_string",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5])
+m.rename!(string(1..10), [`A])
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_nanotimestamp_double",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20])
+m.rename!(nanotimestamp([1,2,3,4,5,6,7,8,9.6,10.1]), `A`B) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_label_null",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20])
+m.rename!(1..10, ) 
+m.setIndexedMatrix!(true) 
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_vector_not_a_string",exception=1
+m=1 4 2 4 5 7 4 3 2 5
+m.rename!(1..10, `A) 
+m.setIndexedMatrix!(true)
+mstdp(m, 3)
+
+@testing:case="test_function_mstdp_m_vector",exception=1
+m=1 4 2 4 5 7 4 3 2 5
+m.rename!("A" + string(1..10), `A) 
+m.setIndexedMatrix!(true)
+mstdp(m, 3)
+
+@testing:case="test_function_indexedSeries_index_NULL",exception=1
+m=indexedSeries(, [10, 20, 30, 40])
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_not_the_first_is_null",exception=1
+m=indexedSeries([1, NULL,3,4], [10, 20, 30, 40])
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_all_same",exception=1
+m=indexedSeries(take(1, 10), rand(100,10))
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_less_than_value",exception=1
+m=indexedSeries(1 2 4 6, rand(100,10))
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_more_than_value",exception=1
+m=indexedSeries(1..11, rand(100,10))
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_more_than_value",exception=1
+m=indexedSeries(1..11, rand(100,10))
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_scalar",exception=1
+m=indexedSeries(1, 1)
+mstdp(m,3)
+
+@testing:case="test_function_indexedSeries_index_scalar",exception=1
+m=indexedSeries(`hello, 1)
+mstdp(m,3)
+
+
+
+
+
+
+
+
+
+syntax(indexedSeries)
+
+
+
+
+
+
+@testing:case="test_function_mstdp_index_int_duration_3d",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(1..10, `A`B) //加标签
+m.setIndexedMatrix!(true) //加索引
+mstdp(m, 3d)
+
+@testing:case="test_function_mstdp_windows_negative",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(1..10, `A`B) //加标签
+m.setIndexedMatrix!(true) //加索引
+mstdp(m, -1)
+
+@testing:case="test_function_mstdp_windows_0",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(1..10, `A`B) //加标签
+m.setIndexedMatrix!(true) //加索引
+mstdp(m, 0)
+
+@testing:case="test_function_mstdp_windows_2",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(1..10, `A`B) //加标签
+m.setIndexedMatrix!(true) //加索引
+mstdp(m, 1)
+
+@testing:case="test_function_mstdp_windows_double",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(1..10, `A`B) //加标签
+m.setIndexedMatrix!(true) //加索引
+mstdp(m, 2.1)
+
+@testing:case="test_function_mstdp_index_decreasing",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(10..1, `A`B) //加标签
+m.setIndexedMatrix!(true) //加索引
+mstdp(m, 3d)
+
+@testing:case="test_function_mstdp_row_label_of_X_all_same",exception=1
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) 
+m.rename!(take(1,10), `A`B) 
+m.setIndexedMatrix!(true)
+mstdp(m, 3)
+
+
+
+@testing:case="test_function_mstdp_setIndexedMatrix"
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) 
+m.rename!(1..10, `A`B)
+m.setIndexedMatrix!(true) 
+
+mstdp(m, 3)
+
+
+x=1..6$3:2
+x.rename!(,`col1`col2)
+x.setIndexedMatrix!(true)
+mstdp(x, 3)
+
+/*
+m = matrix(1 2 3 4, 5 6 7 8, 9 10 11 12)
+m.rename!(2021.01.01 + 0 3  5  8, `GOOG`IBM`MSFT)
+m.setIndexedMatrix!(true)
+
+b = msum(m, 4d)
+c = moving(sum, m, 4d)
+
+
+s1 = indexedSeries(2012.01.01..2012.01.04, [10, 20, 30, 40])
+
+msum(s1,2d)
+
+s1 = indexedMatrix(2012.01.01..2012.01.04, [10, 20, 30, 40])
+syntax(indexedMatrix)
+
+syntax(indexedSeries)
+
+
+isIndexedSeries(s1)
+
+
+
+
+
+
+
+m=matrix([1 4 2 4 5 7 4 3 2 5],[6 3 6 7 2 4 2 8 1 20]) //创建矩阵
+m.rename!(2020.01.01..2020.01.10, `A`B) //加标签
+m.setIndexedMatrix!() //加索引
+*/
+
+
+
+(2..11)\2 join ((6..1030)+0.5 )
+

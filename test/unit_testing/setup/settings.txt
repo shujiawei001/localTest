@@ -1,0 +1,2 @@
+DATA_DIR = "/home/jwshu/work/localTest/test/unit_testing/setup/data/"
+WORK_DIR ="/home/jwshu/work/work_dir"
